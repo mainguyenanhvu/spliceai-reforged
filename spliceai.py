@@ -2,7 +2,7 @@
 
 import os
 import typing as t
-import logging
+import logging.config
 from pathlib import Path
 
 import click
