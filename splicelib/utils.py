@@ -1,3 +1,4 @@
+import sys
 import typing as t
 from itertools import islice, takewhile, repeat
 
@@ -24,7 +25,13 @@ def one_hot_encode(seq: str) -> np.ndarray:
     :return: an encoded sequence
     """
     translated = seq.upper().translate(BASE_TRANSLATION).encode()
-    return BASE_MAP[np.frombuffer(translated, np.int8)]
+    try:
+        base_map = BASE_MAP[np.frombuffer(translated, np.int8)] # IndexError: index 82 is out of bounds for axis 0 with size 5
+    except Exception as e:
+        print(e)
+        print("seq: {}\ntranslated: {}".format(seq,translated)})
+        sys.exit()
+    return base_map
 
 
 def format_chromosome(long: bool, chrom: str) -> str:
