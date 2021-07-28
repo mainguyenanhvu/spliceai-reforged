@@ -35,7 +35,8 @@ setup(
         'tensorflow>=2.0',
         'pysam>=0.15.3',
         'pyfaidx>=0.5.9',
-        'ncls>=0.0.53'
+        'ncls>=0.0.53',
+        'pyyaml>=5.4.1'
     ],
     scripts=['spliceai.py']
 )

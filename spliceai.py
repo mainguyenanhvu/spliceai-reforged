@@ -20,7 +20,13 @@ except ImportError:
     import importlib_resources as resources
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # FATAL
-logging.getLogger('tensorflow').setLevel(logging.FATAL)
+#logging.getLogger('tensorflow').setLevel(logging.FATAL)
+import yaml
+
+with open('spliceai_logging_config.yml', 'r') as config:
+    logging.config.dictConfig(yaml.safe_load(config))
+
+logger = logging.getLogger('cloaked_chatter')
 
 # N_VISIBLE_GPUS = len(tf.config.experimental.list_physical_devices('GPU'))
 ANNOTATIONS = {
@@ -126,7 +132,10 @@ def spliceai(input, output, ref_assembly, annotations, distance, mask,
     vcf_output = pysam.VariantFile(output, mode='w', header=header)
     # break input into batches
     input_batches = iterate_batches(preprocessing_batch, vcf_input)
+    batch_current = 0
     for batch in input_batches:
+        batch_current +=1
+        logger.info('Running batch: {}'.format(batch_current))
         # for every input variant `annotate` returns a list of annotation
         # strings and an optional logging message
         scores = annotate(
@@ -135,7 +144,7 @@ def spliceai(input, output, ref_assembly, annotations, distance, mask,
         )
         for variant, (scores_, message) in zip(batch, scores):
             if message:
-                logging.error(message)
+                logger.error(message)
             variant.info['SpliceAI'] = scores_
             vcf_output.write(variant)
 
