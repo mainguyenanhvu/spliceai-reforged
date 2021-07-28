@@ -22,12 +22,13 @@ except ImportError:
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # FATAL
 #logging.getLogger('tensorflow').setLevel(logging.FATAL)
 import yaml
-logger_file = resources.path(config_file,'spliceai_logging_config.yml')
-logger_path = logger_file# Path(logger_file).absolute()
-print(logger_path)
-#logger_path = t.Union(logger_path,str)
-with open(logger_path, 'r') as config:
-    logging.config.dictConfig(yaml.safe_load(config))
+# logger_file = resources.path(config_file,'spliceai_logging_config.yml')
+# logger_path = logger_file# Path(logger_file).absolute()
+# print(logger_path)
+# #logger_path = t.Union(logger_path,str)
+with resources.path(config_file,'spliceai_logging_config.yml') as logger_path:
+    with open(logger_path, 'r') as config:
+        logging.config.dictConfig(yaml.safe_load(config))
 
 logger = logging.getLogger('cloaked_chatter')
 
