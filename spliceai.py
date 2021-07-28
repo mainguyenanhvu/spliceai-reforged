@@ -26,7 +26,7 @@ import yaml
 # logger_path = logger_file# Path(logger_file).absolute()
 # print(logger_path)
 # #logger_path = t.Union(logger_path,str)
-with resources.path(cffiles,'spliceai_logging_config.ml') as logger_path:
+with resources.path(builtin_annotations,'spliceai_logging_config.txt') as logger_path:
     with open(logger_path, 'r') as config:
         logging.config.dictConfig(yaml.safe_load(config))
 
