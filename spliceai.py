@@ -23,7 +23,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # FATAL
 #logging.getLogger('tensorflow').setLevel(logging.FATAL)
 import yaml
 
-with open('spliceai_logging_config.yml', 'r') as config:
+with open(resources.path('spliceai_logging_config.yml'), 'r') as config:
     logging.config.dictConfig(yaml.safe_load(config))
 
 logger = logging.getLogger('cloaked_chatter')
