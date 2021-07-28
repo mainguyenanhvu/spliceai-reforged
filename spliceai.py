@@ -9,7 +9,7 @@ import click
 import pysam
 from tensorflow.keras.models import Model, load_model
 
-from splicelib import trained_models, builtin_annotations
+from splicelib import trained_models, builtin_annotations,config_file
 from splicelib.reference import Reference
 from splicelib.processing import annotate
 from splicelib.utils import iterate_batches
@@ -23,7 +23,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # FATAL
 #logging.getLogger('tensorflow').setLevel(logging.FATAL)
 import yaml
 
-with open(resources.path('spliceai_logging_config.yml'), 'r') as config:
+with open(resources.path(config_file,'spliceai_logging_config.yml'), 'r') as config:
     logging.config.dictConfig(yaml.safe_load(config))
 
 logger = logging.getLogger('cloaked_chatter')
