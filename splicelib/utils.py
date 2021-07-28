@@ -29,7 +29,7 @@ def one_hot_encode(seq: str) -> np.ndarray:
         base_map = BASE_MAP[np.frombuffer(translated, np.int8)] # IndexError: index 82 is out of bounds for axis 0 with size 5
     except Exception as e:
         print(e)
-        print("seq: {}\ntranslated: {}".format(seq,translated)})
+        print("seq: {}\ntranslated: {}".format(seq,translated))
         sys.exit()
     return base_map
 
