@@ -12,7 +12,6 @@ setup(
     description='',
     author='Ilia Korvigo',
     author_email='',
-    url='',
     editor='Anh-Vu Mai-Nguyen',
     editor_email='mainguyenanhvu@gmail.com',
     url='https://www.linkedin.com/in/anh-vu-mai-nguyen/',
