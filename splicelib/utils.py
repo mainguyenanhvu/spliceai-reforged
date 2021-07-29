@@ -4,7 +4,8 @@ from itertools import islice, takewhile, repeat
 
 import numpy as np
 
-BASE_TRANSLATION = str.maketrans('NACGT', '\x00\x01\x02\x03\x04')
+IUPAC = 'RYSWKMBDHVN.-'
+BASE_TRANSLATION = str.maketrans(IUPAC+'ACGT', '\x00'*len(IUPAC)+'\x01\x02\x03\x04')
 BASE_MAP = np.asarray([[0, 0, 0, 0],
                        [1, 0, 0, 0],
                        [0, 1, 0, 0],
@@ -25,12 +26,7 @@ def one_hot_encode(seq: str) -> np.ndarray:
     :return: an encoded sequence
     """
     translated = seq.upper().translate(BASE_TRANSLATION).encode()
-    try:
-        base_map = BASE_MAP[np.frombuffer(translated, np.int8)] # IndexError: index 82 is out of bounds for axis 0 with size 5
-    except Exception as e:
-        print(e)
-        print("seq: {}\ntranslated: {}".format(seq,translated))
-        sys.exit()
+    base_map = BASE_MAP[np.frombuffer(translated, np.int8)] # IndexError: index 82 is out of bounds for axis 0 with size 5
     return base_map
 
 
@@ -58,6 +54,6 @@ def iterate_batches(n: int, iterable: t.Iterable[A]) -> t.Iterator[t.List[A]]:
     iterator = iter(iterable)
     return takewhile(bool, (list(islice(iterator, n)) for _ in repeat(None)))
 
-
+n
 if __name__ == '__main__':
     raise RuntimeError

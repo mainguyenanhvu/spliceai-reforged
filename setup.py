@@ -8,13 +8,19 @@ if sys.version_info < (3, 7, 0):
 
 setup(
     name='spliceai-reforged',
-    version='0.1dev1',
+    version='0.2',
     description='',
     author='Ilia Korvigo',
     author_email='',
     url='',
+    editor='Anh-Vu Mai-Nguyen',
+    editor_email='mainguyenanhvu@gmail.com',
+    url='https://www.linkedin.com/in/anh-vu-mai-nguyen/'
     packages=find_packages(),
     package_data={
+        'splicelib.config_files': [
+            'spliceai_logging_config.yml'
+        ],
         'splicelib.builtin_annotations': [
             'grch37.txt',
             'grch38.txt'

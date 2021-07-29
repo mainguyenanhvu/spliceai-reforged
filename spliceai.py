@@ -9,7 +9,7 @@ import click
 import pysam
 from tensorflow.keras.models import Model, load_model
 
-from splicelib import trained_models, builtin_annotations,cffiles
+from splicelib import trained_models, builtin_annotations,config_files
 from splicelib.reference import Reference
 from splicelib.processing import annotate
 from splicelib.utils import iterate_batches
@@ -20,13 +20,8 @@ except ImportError:
     import importlib_resources as resources
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # FATAL
-#logging.getLogger('tensorflow').setLevel(logging.FATAL)
 import yaml
-# logger_file = resources.path(cffiles,'spliceai_logging_config.yml')
-# logger_path = logger_file# Path(logger_file).absolute()
-# print(logger_path)
-# #logger_path = t.Union(logger_path,str)
-with resources.path(builtin_annotations,'cff.txt') as logger_path:
+with resources.path(config_files,'spliceai_logging_config.yml') as logger_path:
     with open(logger_path, 'r') as config:
         logging.config.dictConfig(yaml.safe_load(config))
 

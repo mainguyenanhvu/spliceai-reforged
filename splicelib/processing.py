@@ -92,7 +92,7 @@ def preprocess(reference: Reference, dist_var: int, record: VariantRecord) \
             alt_pad = ref_pad[:wid // 2] + str(alt) + ref_pad[wid // 2 + len_ref:]
 
             # one-hot encode the sequences (size=(wid, 4))
-            x_ref = one_hot_encode(ref_pad) # IndexError: index 82 is out of bounds for axis 0 with size 5, utils.py line 27
+            x_ref = one_hot_encode(ref_pad)
 
             x_alt = one_hot_encode(alt_pad)
 
