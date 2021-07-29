@@ -54,6 +54,5 @@ def iterate_batches(n: int, iterable: t.Iterable[A]) -> t.Iterator[t.List[A]]:
     iterator = iter(iterable)
     return takewhile(bool, (list(islice(iterator, n)) for _ in repeat(None)))
 
-n
 if __name__ == '__main__':
     raise RuntimeError
