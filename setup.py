@@ -15,7 +15,7 @@ setup(
     url='',
     editor='Anh-Vu Mai-Nguyen',
     editor_email='mainguyenanhvu@gmail.com',
-    url='https://www.linkedin.com/in/anh-vu-mai-nguyen/'
+    url='https://www.linkedin.com/in/anh-vu-mai-nguyen/',
     packages=find_packages(),
     package_data={
         'splicelib.config_files': [
