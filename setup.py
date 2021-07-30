@@ -9,7 +9,10 @@ if sys.version_info < (3, 7, 0):
 setup(
     name='spliceai-reforged',
     version='0.2',
-    description='',
+    description='spliceai_reforged: A deep learning-based tool to identify splice variants by utilizing GPUs',
+    long_description=io.open('README.md', encoding='utf-8').read(),
+    long_description_content_type='text/markdown',
+    link='https://github.com/mainguyenanhvu/spliceai-reforged',
     author='Ilia Korvigo',
     author_email='',
     editor='Anh-Vu Mai-Nguyen',

@@ -26,7 +26,7 @@ def one_hot_encode(seq: str) -> np.ndarray:
     :return: an encoded sequence
     """
     translated = seq.upper().translate(BASE_TRANSLATION).encode()
-    base_map = BASE_MAP[np.frombuffer(translated, np.int8)] # IndexError: index 82 is out of bounds for axis 0 with size 5
+    base_map = BASE_MAP[np.frombuffer(translated, np.int8)]
     return base_map
 
 
