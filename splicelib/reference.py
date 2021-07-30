@@ -94,6 +94,8 @@ class Reference:
         :param pos: 1-based position on the chromosome
         :return:
         """
+        if chrom not in self._indices.keys():
+            return None
         intervals = self._indices[chrom]
         return [iv[-1] for iv in intervals.find_overlap(pos, pos)]
 

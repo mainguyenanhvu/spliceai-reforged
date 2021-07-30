@@ -46,6 +46,8 @@ def preprocess(reference: Reference, dist_var: int, record: VariantRecord) \
 
     chrom = format_chromosome(reference.long_chrom, record.chrom)
     feature_indices = reference.feature_indices(chrom, record.pos)
+    if feature_indices is None:
+        return [], f"Cannot find variant record's chrom name in reference chrom: {record}"
     if not feature_indices:
         return [], f'No overlapping features for variant record: {record}'
     # extract sequence from the reference; -1 in the left part of the slice
